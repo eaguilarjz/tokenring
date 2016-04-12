@@ -1,0 +1,53 @@
+1. To start a controller:
+
+# In Linux or OS X:
+java -cp libs/*:Moses.jar Moses
+
+# In Windows:
+java -cp libs/*;Moses.jar Moses
+
+------------
+
+2. To start the interactive agent:
+
+# In Linux or OS X:
+java -cp libs/*:Moses.jar InteractiveAgent <host> <port> <law_path> <agent_name>
+
+# In Windows:
+java -cp libs/*;Moses.jar InteractiveAgent <host> <port> <law_path> <agent_name>
+
+------------
+
+3. To send a message in InteractiveAgent:
+
+After the InteractiveAgent is started, it will wait for your input to send messages to other agents.
+
+For instance, to send a message "hello" to the agent "foo" on the host "127.0.0.1", you can just input this:
+
+foo@127.0.0.1 hello
+
+, then press enter.
+
+------------
+
+4. To send a message with parameters in InteractiveAgent:
+
+If your message is a valid JSON string, then Moses will treat it as a message with structure.
+
+For instance, you can send such a message to foo in InteractiveAgent:
+
+foo@127.0.0.1 {"title": "send_money", "amount": 100}
+
+, then in the law, you can access the message's parameters by their names.
+
+For instance, in the law, you can write something like this:
+
+UPON("arrived", function(){
+    if (this.message.title === "send_money" && this.message.amount > 0){
+        DO("set", {key: "money", value: CS("money") + this.message.amount});
+        DO("deliver");
+        return true;
+    }
+});
+
+You can see that if you want your message to carry parameters, then you should send a JSON message.

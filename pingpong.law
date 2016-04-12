@@ -1,0 +1,30 @@
+law(pingpong, language(coffeescript))
+
+UPON "sent", ->
+    if @message is "ping" and CS("ping_to") isnt @receiver
+        DO "set", key: "ping_to", value: @receiver
+        DO "forward"
+        return true
+
+UPON "arrived", ->
+    if @message is "ping"
+        DO "set", key: "ping_from", value: @sender
+        DO "deliver"
+        return true
+
+UPON "sent", ->
+    if @message is "pong" and CS("ping_from") is @receiver
+        DO "unset", key: "ping_from"
+        DO "forward"
+        return true
+
+UPON "arrived", ->
+    if @message is "pong"
+        if CS("ping_to") is @sender
+            DO "unset", key: "ping_to"
+        DO "deliver"
+        return true
+
+UPON "disconnected", ->
+    DO "quit"
+    return true

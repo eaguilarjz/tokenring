@@ -1,0 +1,40 @@
+law(monitor,language(coffeescript))
+
+monitor = "monitor@172.31.17.229"
+
+UPON "adopted", ->
+    if @self isnt monitor
+        DO "forward", sender: @self, receiver: monitor, message:
+            event: "adopted"
+            controller: @self
+        return true
+
+UPON "disconnected", ->
+    if @self isnt monitor
+        DO "forward", sender: @self, receiver: monitor, message:
+            event: "disconnected"
+            controller: @self
+    DO "quit"
+    return true
+
+UPON "sent", ->
+    if @self isnt monitor
+        DO "forward", sender: @sender, receiver: monitor, message:
+            event: "sent"
+            controller: @self
+            sender: @sender
+            receiver: @receiver
+            message: @message
+    DO "forward"
+    return true
+
+UPON "arrived", ->
+    if @self isnt monitor
+        DO "forward", sender: @sender, receiver: monitor, message:
+            event: "arrived"
+            controller: @self
+            sender: @sender
+            receiver: @receiver
+            message: @message
+    DO "deliver"
+    return true
