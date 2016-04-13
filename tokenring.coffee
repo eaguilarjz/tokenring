@@ -1,7 +1,7 @@
 law(tokenring,language(coffeescript))
 
 # Variable to store the IP address of the host
-host = "172.31.214.184"
+host = "172.31.16.185"
 
 # Special agents in the system
 manager = "manager@" + host
@@ -36,6 +36,9 @@ UPON "arrived", ->
             next: CS("next") 
         DO "set", key: "next", value: @message.member
         DO "deliver"
+        DO "deliver", sender: @self, receiver: @self, message:
+            previous: CS("previous")
+            next: CS("next")
         return true 
     
 # When a new member is accepted, he updates his own previous and next properties to the values sent by the agent
@@ -47,8 +50,11 @@ UPON "arrived", ->
         # We send a message to the next member so he can update his previous property
         DO "forward", sender: @self, receiver: @message.next, message:
             action: "update",
-            member: @sender
+            member: @self
         DO "deliver"
+        DO "deliver", sender: @self, receiver: @self, message:
+            previous: CS("previous")
+            next: CS("next")
         return true
     
 # When an agent receives the instruction "update" from the new member, he updates his previous property with the name of the new member
@@ -56,6 +62,9 @@ UPON "arrived", ->
     if @self isnt manager and @self isnt server and @message.action is "update"
         DO "set", key: "previous", value: @message.member
         DO "deliver"
+        DO "deliver", sender: @self, receiver: @self, message:
+            previous: CS("previous")
+            next: CS("next")
         return true
     
 # When an agent disconnects from the system, he sends a "leave" message to the previous member of the ring
@@ -78,13 +87,17 @@ UPON "arrived", ->
         DO "forward", sender: @self, receiver: @message.next, message:
             action: "update",
             member: @self
-        DO "deliver"
+        DO "deliver", sender: @self, receiver: @self, message:
+            previous: CS("previous")
+            next: CS("next")
         return true
 
+###
 UPON "arrived", ->  
     DO "deliver"
     return true
-    
+###
+
 ###
 Law for the manager
 ###
@@ -112,6 +125,7 @@ UPON "arrived", ->
                 action: "insert",
                 member: @message.member
         members.push @message.member
+        DO "deliver", sender: @sender, receiver: @receiver, message: members
         DO "set", key: "members", value: members
         return true
     
@@ -122,5 +136,6 @@ UPON "arrived", ->
         members = CS("members")
         pos = members.indexOf(@message.member)
         members.splice(pos,1)
+        DO "deliver", sender: @sender, receiver: @receiver, message: members
         DO "set", key: "members", value: members
         return true
