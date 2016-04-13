@@ -1,7 +1,7 @@
 law(tokenring,language(coffeescript))
 
 # Variable to store the IP address of the host
-host = "172.31.16.185"
+host = "172.31.160.180"
 
 # Special agents in the system
 manager = "manager@" + host
@@ -88,10 +88,11 @@ UPON "arrived", ->
         return true
 
 # When the obligation expires, passes the token
-UPON "obligation_due"
+UPON "obligation_due", ->
     if @type is "max_time"
+        DO "deliver", sender: @self, receiver: @self, message:"I still have the token. Wohoo!"
         return true
-    
+
 # When an agent receives the instruction "leave" from another agent, he updates his next property and send
 # a message "remove" to the manager so he can update the list of member of the ring
 UPON "arrived", ->
