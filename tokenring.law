@@ -25,6 +25,8 @@ UPON "adopted", ->
         # The default values are the same actor
         DO "set", key: "previous", value: @self
         DO "set", key: "next", value: @self
+        # Sets a status to store if this agent has the token
+        DO "set", key: "has_token", value: "no"
         return true
     
 # When an agent receives the instruction "insert" from the manager, he sends an accepted message to the new member
@@ -76,6 +78,20 @@ UPON "disconnected", ->
         DO "quit"
         return true
     
+# When an agent receives the token, he updates his property 'has_token' to the value 'yes'
+UPON "arrived", ->
+    if @self isnt manager and @self isnt server and @message.action is "token"
+        DO "set", key: "has_token", value: "yes"
+        DO "deliver", sender: @sender, receiver: @receiver, message: "I have the token"
+        # Imposes the obligation to pass the token every second
+        DO "impose_obligation", type: "max_time", time: 2
+        return true
+
+# When the obligation expires, passes the token
+UPON "obligation_due"
+    if @type is "max_time"
+        return true
+    
 # When an agent receives the instruction "leave" from another agent, he updates his next property and send
 # a message "remove" to the manager so he can update the list of member of the ring
 UPON "arrived", ->
@@ -119,6 +135,10 @@ UPON "arrived", ->
         DO "deliver", sender: @sender, receiver: @receiver, message: @message.member + " wants to " + @message.action
         # Adds the new actor to the list of members
         members = CS("members")
+        # If this is the first member, we pass him the token
+        if members.length == 0
+            DO "forward", sender: @self, receiver: @message.member, message:
+                action: "token"
         # If the list of members is not empty, we send an "insert" message to the last member of the ring
         if members.length > 0
             DO "forward", sender: @self, receiver: members[members.length - 1], message:
