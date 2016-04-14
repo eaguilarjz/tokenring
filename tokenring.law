@@ -4,7 +4,7 @@ law(tokenring,language(coffeescript))
 host = "172.31.21.201"
 
 # Max time allowed to have the token (in seconds)
-max_time = 2
+max_time = 3
 # Waiting time for the manager before regenerating the token
 regeneration_time = 5
 
@@ -192,6 +192,8 @@ UPON "arrived", ->
     if @self is manager and @message.type is "token received"
         DO "repeal_obligation", type: "regenerate_token"
         DO "impose_obligation", type: "regenerate_token", time: regeneration_time
+        DO "deliver"
+        return true
 
 UPON "obligation_due", ->
     if @type is "regenerate_token"
