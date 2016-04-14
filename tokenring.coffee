@@ -213,6 +213,14 @@ UPON "obligation_due", ->
         return true
     
 ###
+Rules for the server
+###
+UPON "arrived", ->
+    if @self is server
+        DO "deliver", sender: @sender, receiver: @receiver, message: @message + " (" + @sender + ")"
+        return true
+    
+###
 Default rules (apply only if none of the previous conditions was fulfilled)
 ###
 
