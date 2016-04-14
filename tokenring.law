@@ -82,10 +82,8 @@ UPON "disconnected", ->
             type: "leave"
             next: CS("next")
         # If this agent has the token, he passes the token to the next agent
-        ###
         DO "forward", sender: @self, receiver: CS("next"), message:
             type: "token"
-        ###
         # Leaves the system gracefully
         DO "quit"
         return true
