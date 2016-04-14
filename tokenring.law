@@ -108,9 +108,19 @@ UPON "obligation_due", ->
             repeal: "no"
         return true
     
+# When an agent passes the token voluntarily
+UPON "arrived", ->
+    if @self isnt manager and @self isnt server and @message is "finished"
+        DO "forward", sender: @self, receiver: @self, message:
+            type: "pass",
+            repeal: "yes"
+        return true
+    
 # When an agent receives the order to pass the token
 UPON "arrived", ->
     if @self isnt manager and @self isnt server and @message.type is "pass" and CS("has_token") is "yes"
+        if @message.repeal is "yes"
+            DO "repeal_obligation", type: "max_time",
         DO "set", key: "has_token", value: "no"
         DO "forward", sender: @self, receiver: CS("next"), message:
             type: "token"
