@@ -4,9 +4,9 @@ law(tokenring,language(coffeescript))
 host = "172.31.21.201"
 
 # Max time allowed to have the token (in seconds)
-max_time = 3
+max_time = 7
 # Waiting time for the manager before regenerating the token
-regeneration_time = 5
+regeneration_time = 10
 
 # Special agents in the system
 manager = "manager@" + host
@@ -131,6 +131,13 @@ UPON "arrived", ->
         DO "deliver", sender: @self, receiver: @self, message:
             previous: CS("previous")
             next: CS("next")
+        return true
+    
+# When an agent tries to send a message to the server, verify that he has the token
+UPON "sent", ->
+    if @receiver is server
+        if CS("has_token") is "yes"
+            DO "forward"
         return true
 
 ###
