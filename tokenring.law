@@ -1,12 +1,12 @@
 law(tokenring,language(coffeescript))
 
 # Variable to store the IP address of the host
-host = "172.31.21.201"
+host = "172.31.19.53"
 
 # Max time allowed to have the token (in seconds)
-max_time = 7
+max_time = 3
 # Waiting time for the manager before regenerating the token
-regeneration_time = 10
+regeneration_time = 5
 
 # Special agents in the system
 manager = "manager@" + host
