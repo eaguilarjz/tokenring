@@ -40,7 +40,7 @@ UPON "arrived", ->
     if @self isnt manager and @self isnt server and @message.type is "insert"
         DO "forward", sender: @self, receiver: @message.member, message:
             type: "accepted",
-            next: CS("next") 
+            next: CS("next")
         DO "set", key: "next", value: @message.member
         DO "deliver"
         DO "deliver", sender: @self, receiver: @self, message:
@@ -84,6 +84,17 @@ UPON "disconnected", ->
         # If this agent has the token, he passes the token to the next agent
         DO "forward", sender: @self, receiver: CS("next"), message:
             type: "token"
+        # Leaves the system gracefully
+        DO "quit"
+        return true
+    
+# When an agent disconnects from the system and he is the last member of the ring, 
+# he sends a remove message to the manager
+UPON "disconnected", ->
+    if @self isnt manager and @self isnt server
+        DO "forward", sender: @self, receiver: manager, message:
+            type: "remove",
+            member: @self
         # Leaves the system gracefully
         DO "quit"
         return true
@@ -202,6 +213,9 @@ UPON "arrived", ->
             type: "member list"
             content: members
         DO "set", key: "members", value: members
+        # Repeals the obligation to regerate the token for the last member of the ring
+        if members.length === 0
+            DO "repeal_obligation", type: "regenerate_token"
         return true
     
 UPON "arrived", ->
