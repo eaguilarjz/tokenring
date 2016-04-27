@@ -47,8 +47,8 @@ def subprocess_reader(file):
                     elif mx == 3:
                         G.add_edge(last,a)
                         G.add_edge(a,first)
-                    elif mx > 3:
-                        G.remove_edge(first,last)
+                    elif mx == 4:
+                        G.remove_edge(last,first)
                         G.add_edge(last,a)
                         G.add_edge(a,first)
 
