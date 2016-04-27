@@ -4,9 +4,9 @@ law(tokenring,language(coffeescript))
 host = "172.31.134.235"
 
 # Max time allowed to have the token (in seconds)
-max_time = 7
+max_time = 12
 # Waiting time for the manager before regenerating the token
-regeneration_time = 10
+regeneration_time = 15
 
 # Special agents in the system
 manager = "manager@" + host
