@@ -22,21 +22,25 @@ def subprocess_reader(file):
     # p terminates.
     while p.poll() is None:
         l = p.stdout.readline() # This blocks until it receives a newline.
-        print (l)
+        print ("\n",l,"\n")
         m = str(l)
         if m.find('join') != -1:
-            print("A member has been added")
-        elif m.find('member list') != -1:
-            print(m.count('@'))
+            print("---> A member has been added")
         elif m.find('member list') != -1:
             members = int(m.count('@'))
-            print("Members on the token ring = ",members)
+            temp_actors = []
+            #print("Number of agents in the token ring = ",members)
+            for ac in actors:
+                if m.find(ac) != -1:
+                    temp_actors.append(ac)
+            print("---> Agents in the token ring: ",temp_actors)
         elif m.find('token received') != -1:
             for act in actors:
-                if m.find(actors[act]) != -1:
-                    token = actors[act]
+                if m.find(act) != -1:
+                    token = act
+                    print("---> ",token," has the token!")
         elif m.find('remove') != -1:
-            print("A member abandoned the ring")
+            print("---> A member abandoned the ring")
          
     # When the subprocess terminates there might be unconsumed output
     # that still needs to be processed.
