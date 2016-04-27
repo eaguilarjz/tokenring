@@ -2,20 +2,21 @@ import subprocess
 import networkx as nx
 import matplotlib.pyplot as plt
 import time
-
+from colorama import init
+init()
 
 def main():
     #subprocess_reader('C:/Moses/Moses/start_controller.bat')
     #subprocess_reader('C:/Moses/Moses/test.bat')
 
-    open1 = input('This visualization requires you to manually start the controller \n when is done press "Y": ')
+    #open1 = input('This visualization requires you to manually start the controller \n when is done press "Y": ')
     
-    open2 = input('This visualization requires you to manually start the server \n when is done press "Y": ')
+    #open2 = input('This visualization requires you to manually start the server \n when is done press "Y": ')
     
-    if ((open1 and open2 == 'Y') or (open1 and open2 == 'y')):
-        visual = subprocess_reader('C:/Moses/Moses/manager.bat')
-    else:
-        print('Please open the files and try again')
+    #if ((open1 and open2 == 'Y') or (open1 and open2 == 'y')):
+    visual = subprocess_reader('C:/Moses/Moses/manager.bat')
+    #else:
+    #print('Please open the files and try again')
 
 def subprocess_reader(file):
 
@@ -28,10 +29,10 @@ def subprocess_reader(file):
     # p terminates.
     while p.poll() is None:
         l = p.stdout.readline() # This blocks until it receives a newline.
-        print ("\n",l,"\n")
+        print('\033[31m'+"\n",l,"\n")
         m = str(l)
         if m.find('join') != -1:
-            print("---> A member has been added")
+            print('\033[33m'+"---> A member has been added")
             for a in actors:
                 if m.find(a) != -1:
                     
@@ -69,7 +70,7 @@ def subprocess_reader(file):
                   
                     temp_actors.append(ac)'''
                     
-            print("---> Agents in the token ring: ",G.nodes())
+            print('\033[34m'+"---> Agents in the token ring: ",G.nodes())
         elif m.find('token received') != -1:
             for act in actors:
                 if m.find(act) != -1:
@@ -80,9 +81,9 @@ def subprocess_reader(file):
 
                     nx.draw_circular(G)
                                         
-                    print("---> ",token," has the token!")
+                    print('\033[32m'+"---> ",token," has the token!")
         elif m.find('remove') != -1:
-            print("---> A member abandoned the ring")
+            print('\033[36m'+"---> A member abandoned the ring")
             for a1 in actors:
                 if m.find(a1) != -1:
                     G.remove_node(a1)
@@ -97,6 +98,7 @@ def subprocess_reader(file):
     # When the subprocess terminates there might be unconsumed output
     # that still needs to be processed.
     print (p.stdout.read())
+    deinit()
 
 
 main()
