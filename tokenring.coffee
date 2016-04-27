@@ -1,7 +1,7 @@
 law(tokenring,language(coffeescript))
 
 # Variable to store the IP address of the host
-host = "172.31.19.53"
+host = "172.31.23.5"
 
 # Max time allowed to have the token (in seconds)
 max_time = 3
@@ -214,7 +214,7 @@ UPON "arrived", ->
             content: members
         DO "set", key: "members", value: members
         # Repeals the obligation to regerate the token for the last member of the ring
-        if members.length === 0
+        if members.length is 0
             DO "repeal_obligation", type: "regenerate_token"
         return true
     

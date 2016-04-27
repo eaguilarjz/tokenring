@@ -1,137 +1,25 @@
 -1
 Type exit to quit
-Received: {"action":"join","member":"qux@172.31.19.53"}
-Received: {"type":"member list","content":["qux@172.31.19.53"]}
-Received: {"action":"join","member":"foo@172.31.19.53"}
-Received: {"type":"member list","content":["qux@172.31.19.53","foo@172.31.19.53"]}
-Received: {"action":"join","member":"bar@172.31.19.53"}
-Received: {"type":"member list","content":["qux@172.31.19.53","foo@172.31.19.53","bar@172.31.19.53"]}
-Received: {"action":"join","member":"baz@172.31.19.53"}
-Received: {"type":"member list","content":["qux@172.31.19.53","foo@172.31.19.53","bar@172.31.19.53","baz@172.31.19.53"]}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"action":"remove","member":"baz@172.31.19.53"}
-Received: {"type":"member list","content":["qux@172.31.19.53","foo@172.31.19.53","bar@172.31.19.53"]}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"action":"join","member":"baz@172.31.19.53"}
-Received: {"type":"member list","content":["qux@172.31.19.53","foo@172.31.19.53","bar@172.31.19.53","baz@172.31.19.53"]}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
-Received: {"type":"token received","actor":"qux@172.31.19.53"}
-Received: {"type":"token received","actor":"foo@172.31.19.53"}
-Received: {"type":"token received","actor":"bar@172.31.19.53"}
-Received: {"type":"token received","actor":"baz@172.31.19.53"}
+Received: {"action":"join","member":"foo@172.31.23.5"}
+Received: {"type":"member list","content":["foo@172.31.23.5"]}
+Received: {"action":"join","member":"baz@172.31.23.5"}
+Received: {"type":"member list","content":["foo@172.31.23.5","baz@172.31.23.5"]}
+Received: {"action":"join","member":"bar@172.31.23.5"}
+Received: {"type":"member list","content":["foo@172.31.23.5","baz@172.31.23.5","bar@172.31.23.5"]}
+Received: {"type":"token received","actor":"foo@172.31.23.5"}
+Received: {"type":"token received","actor":"baz@172.31.23.5"}
+Received: {"type":"token received","actor":"bar@172.31.23.5"}
+Received: {"type":"token received","actor":"bar@172.31.23.5"}
+Received: {"action":"remove","member":"baz@172.31.23.5"}
+Received: {"type":"member list","content":["foo@172.31.23.5","bar@172.31.23.5"]}
+Received: {"type":"token received","actor":"foo@172.31.23.5"}
+Received: {"type":"token received","actor":"bar@172.31.23.5"}
+Received: {"action":"remove","member":"qux@172.31.23.5"}
+Received: {"type":"member list","content":["foo@172.31.23.5"]}
+Received: {"type":"token received","actor":"foo@172.31.23.5"}
+Received: {"action":"remove","member":"bar@172.31.23.5"}
+Received: {"type":"member list","content":[]}
+Received: {"type":"token received","actor":"foo@172.31.23.5"}
+Received: {"type":"token received","actor":"foo@172.31.23.5"}
+Received: {"action":"remove","member":"foo@172.31.23.5"}
+Received: {"type":"member list","content":[]}
