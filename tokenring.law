@@ -1,7 +1,7 @@
 law(tokenring,language(coffeescript))
 
 # Variable to store the IP address of the host
-host = "172.31.134.235"
+host = "172.31.23.30"
 
 # Max time allowed to have the token (in seconds)
 max_time = 12
@@ -136,7 +136,6 @@ UPON "arrived", ->
         DO "forward", sender: @self, receiver: CS("next"), message:
             type: "token"
         DO "deliver"
-        return true
     
 # When an agent receives the instruction "leave" from another agent, he updates his next property and send
 # a message "remove" to the manager so he can update the list of member of the ring
